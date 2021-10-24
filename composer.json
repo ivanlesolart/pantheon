@@ -1,0 +1,161 @@
+// 20211025083930
+// https://gitlab.ref.gnc/drupal-site/cesam/-/raw/develop/composer.json
+
+{
+  "name": "drupal/recommended-project",
+  "description": "Project template for Drupal 8 projects with a relocated document root",
+  "type": "project",
+  "license": "GPL-2.0-or-later",
+  "homepage": "https://www.drupal.org/project/drupal",
+  "support": {
+    "docs": "https://www.drupal.org/docs/user_guide/en/index.html",
+    "chat": "https://www.drupal.org/node/314178"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    }
+  ],
+  "require": {
+    "php": ">=7.4",
+    "composer/installers": "^1.9",
+    "cweagans/composer-patches": "~1.0",
+    "drupal/admin_toolbar": "^2.3",
+    "drupal/better_social_sharing_buttons": "^3.1",
+    "drupal/block_field": "^1.0",
+    "drupal/block_styles": "^2.0",
+    "drupal/bootstrap_barrio": "5.1.4",
+    "drupal/bootstrap_sass": "^5.0",
+    "drupal/captcha": "^1.1",
+    "drupal/clamav": "^2.0",
+    "drupal/config_ignore": "^2.2",
+    "drupal/console": "~1.0",
+    "drupal/content_browser": "^1.0",
+    "drupal/core-composer-scaffold": "^8.8",
+    "drupal/core-project-message": "^8.8",
+    "drupal/core-recommended": "^8.8",
+    "drupal/devel": "^4.0",
+    "drupal/devel_php": "^1.2",
+    "drupal/ds": "^3.9",
+    "drupal/entity_browser": "^2.5",
+    "drupal/eu_cookie_compliance": "^1.9",
+    "drupal/field_group": "^3.1",
+    "drupal/fontawesome": "^2.17",
+    "drupal/geolocation": "^3.2",
+    "drupal/google_analytics": "^3.1",
+    "drupal/image_effects": "^3.1",
+    "drupal/inline_entity_form": "^1.0",
+    "drupal/jsonapi_extras": "^3.16",
+    "drupal/jwt": "^1.0@beta",
+    "drupal/like_and_dislike": "1.x-dev@dev",
+    "drupal/metatag": "^1.14",
+    "drupal/migrate_source_csv": "^3.4",
+    "drupal/migrate_tools": "^4.5",
+    "drupal/openapi": "^2.0@RC",
+    "drupal/openapi_jsonapi": "^3.0",
+    "drupal/openapi_ui": "^1.0@RC",
+    "drupal/openapi_ui_redoc": "^1.0@RC",
+    "drupal/openapi_ui_swagger": "^1.0@RC",
+    "drupal/openid_connect": "^1.0",
+    "drupal/override_node_options": "^2.5",
+    "drupal/paragraphs": "^1.12",
+    "drupal/pathauto": "^1.8",
+    "drupal/quick_node_block": "^1.2",
+    "drupal/redirect": "^1.6",
+    "drupal/redirect_after_login": "^2.6",
+    "drupal/scheduler": "^1.3",
+    "drupal/schemata": "^1.0@beta",
+    "drupal/structure_sync": "^2.0",
+    "drupal/svg_image": "^1.14",
+    "drupal/swiftmailer": "^2.0@beta",
+    "drupal/telephone_formatter": "^1.0",
+    "drupal/telephone_validation": "^2.3",
+    "drupal/time_field": "^2.0",
+    "drupal/twig_tweak": "^2.9",
+    "drupal/upgrade_status": "^3.9",
+    "drupal/views_data_export": "^1.0",
+    "drupal/webform": "^6.0",
+    "drush/drush": "^10",
+    "giggsey/libphonenumber-for-php": "^8.12",
+    "mnsami/composer-custom-directory-installer": "^2.0",
+    "oomphinc/composer-installers-extender": "^2.0"
+  },
+  "require-dev": {
+    "drupal/core-dev": "^8.8",
+    "mglaman/drupal-check": "^1.1"
+  },
+  "conflict": {
+    "drupal/drupal": "*"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "sort-packages": true,
+    "secure-http": false,
+    "platform": {
+      "php": "7.4.21"
+    }
+  },
+  "extra": {
+    "drupal-scaffold": {
+      "locations": {
+        "web-root": "web/"
+      }
+    },
+    "installer-paths": {
+      "web/core": [
+        "type:drupal-core"
+      ],
+      "web/libraries/{$name}": [
+        "swagger-api/swagger-ui",
+        "type:drupal-library"
+      ],
+      "web/modules/contrib/{$name}": [
+        "type:drupal-module"
+      ],
+      "web/profiles/contrib/{$name}": [
+        "type:drupal-profile"
+      ],
+      "web/themes/contrib/{$name}": [
+        "type:drupal-theme"
+      ],
+      "drush/Commands/contrib/{$name}": [
+        "type:drupal-drush"
+      ],
+      "web/modules/custom/{$name}": [
+        "type:drupal-custom-module"
+      ],
+      "web/themes/custom/{$name}": [
+        "type:drupal-custom-theme"
+      ]
+    },
+    "patches": {
+      "drupal/core": {
+        "Fixing the PostGreSQL schema errors": "./patches/core/1060476-105.patch",
+        "Fix mismatch of $base_url with Symfony request object": "./patches/core/2753591-base-url-49.patch"
+      },
+      "drupal/field_group": {
+        "html5 required field focus": "./patches/field_group/2787179-highlight-html5-validation-53.patch"
+      },
+      "drupal/google_analytics": {
+        "RGPD project/google_analytics/issues/2917905": "./patches/google_analytics/google_analytics-eu_cookie_compliance_support-2917905-53.patch",
+        "v4": "./patches/google_analytics/ga4-3178179-3.patch"
+      },
+      "drupal/jwt": {
+        "JWT": "./patches/jwt/jwt_expiration_date.patch"
+      },
+      "drupal/openapi_jsonapi": {
+        "OpenAPI v3 - swagger": "./patches/openapi_jsonapi/jsonApi-item.patch"
+      },
+      "drupal/openid_connect": {
+        "Force https": "./patches/openid_connect/openid_connect_https.patch",
+        "Non public postgres schema / openid_connect_update_8105": "./patches/openid_connect/openid_connect_update_8105.patch",
+        "Partner pre creation feature": "./patches/openid_connect/openid_no_taken_email_check.patch"
+      },
+      "giggsey/libphonenumber-for-php": {
+        "Nc phone regex validator 055555 / 1000 (opt nc) renvoi Numéro de téléphone invalide. Correction via : https://www.regextester.com/109154": "./patches/giggey/giggey_nc_regex.patch"
+      }
+    }
+  }
+}
